@@ -33,8 +33,8 @@ function R(option) {
         node.parentNode.insertBefore(elText, node)
       }
     })
-    node.textContent = ''
-//    node.remove()
+
+    node.remove()
   })
 
   console.log(textEl)
