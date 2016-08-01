@@ -1,4 +1,4 @@
-import R from './r.js'
+import R from './instace/r.js'
 new R({
   el: 'body',
   data: {

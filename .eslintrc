@@ -3,6 +3,7 @@
   "rules": {
     "space-before-function-paren": 0,
     "comma-dangle": [2, "only-multiline"],
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "no-var": 2
   }
 }
