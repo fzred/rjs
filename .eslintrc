@@ -2,6 +2,7 @@
   "extends": "vue",
   "rules": {
     "space-before-function-paren": 0,
-    "comma-dangle": [2, "only-multiline"]
+    "comma-dangle": [2, "only-multiline"],
+    "no-unused-vars": 1
   }
 }
