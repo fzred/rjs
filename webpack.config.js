@@ -20,5 +20,5 @@ module.exports = {
       }
     ]
   },
-  devtool: 'eval'
+  devtool: 'source-map'
 }

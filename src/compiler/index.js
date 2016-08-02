@@ -8,6 +8,7 @@ const reg = {
   },
 }
 const Text = window.Text
+
 function getTextExpressionEl(nodes) {
   const textEls = []
   for (let i = 0; i < nodes.childNodes.length; i++) {
@@ -24,6 +25,7 @@ function getTextExpressionEl(nodes) {
   }
   return textEls
 }
+
 export function getAllExpressionEl(dom) {
   const textEls = getTextExpressionEl(dom)
   const expressEl = []
@@ -40,7 +42,7 @@ export function getAllExpressionEl(dom) {
           exp: expression,
           node: elText
         })
-      } else { // 文本直接插件
+      } else { // 文本直接插入
         const elText = new Text()
         elText.textContent = item
         node.parentNode.insertBefore(elText, node)

@@ -4,3 +4,6 @@ export function toString(v) {
 export function isElement(v) {
   return v instanceof window.Element
 }
+export function isFn(v) {
+  return toString(v) === '[object Function]'
+}

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline"
+    "test": "each test",
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,8 @@
     "url": "https://github.com/fzred/rjs/issues"
   },
   "homepage": "https://github.com/fzred/rjs#readme",
+  "dependencies": {
+  },
   "devDependencies": {
     "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",

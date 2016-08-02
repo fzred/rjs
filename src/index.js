@@ -1,7 +1,14 @@
 import R from './instace/r.js'
-new R({
+
+window.vm = new R({
   el: 'body',
   data: {
-    msg: 'r.js'
+    msg: 'r.js',
+    time: new Date().getTime()
+  },
+  ready() {
+    window.setInterval(() => {
+      this.time = new Date().getTime()
+    }, 1000)
   }
 })
