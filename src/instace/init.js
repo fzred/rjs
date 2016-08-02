@@ -5,6 +5,7 @@ export default function (R) {
   prototype._init = function (option) {
     this.$el = null
     this.$data = option.data
+    this._data = option.data
     this._expressEl = null
     this._options = option
 
