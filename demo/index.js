@@ -3,7 +3,12 @@ window.vm = new window.R({
   data: {
     msg: 'r.js',
     obj: {
-      id: 1
+      id: 1,
+      obj2: {
+        obj3: {
+          d: 3
+        }
+      }
     },
     time: new Date().getTime()
   },
