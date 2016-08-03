@@ -1,16 +1,25 @@
 import Dep from '../observe/dep'
+import { parseExpression } from '../compiler'
+import { isFn } from '../util'
 
 export default class Watcher {
   constructor(vm, expOrFn, cb) {
     this.cb = cb
     this.vm = vm
-    // 此处简化.要区分fuction还是expression,只考虑最简单的expression
-    this.expOrFn = expOrFn
+    this.expression = expOrFn
+    if (isFn(expOrFn)) {
+      this.getter = expOrFn
+      this.setter = undefined
+    } else {
+      const res = parseExpression(expOrFn, this.twoWay)
+      this.getter = res.get
+      this.setter = res.set
+    }
+
     Dep.target = this
-    this.value = this.get()
+    this.update()
     Dep.target = null
     this.firstUpdated = false
-    this.update()
   }
 
   update() {
@@ -32,8 +41,13 @@ export default class Watcher {
   }
 
   get() {
-    // 此处简化。。要区分fuction还是expression
-    const value = this.vm._data[this.expOrFn]
+    const scope = this.vm
+    let value
+    try {
+      value = this.getter.call(scope, scope)
+    } catch (e) {
+      console.error('表达式无法获取到值', this.expression, this.vm)
+    }
     return value
   }
 }

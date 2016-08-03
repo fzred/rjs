@@ -1,4 +1,6 @@
 import { toString } from '../util'
+export * from './expression'
+
 const reg = {
   get regText() {
     return /({{.+?}})/g

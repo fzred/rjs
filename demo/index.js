@@ -2,7 +2,7 @@ window.vm = new window.R({
   el: 'body',
   data: {
     msg: 'r.js',
-    data: {
+    obj: {
       id: 1
     },
     time: new Date().getTime()

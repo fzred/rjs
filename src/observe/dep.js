@@ -4,7 +4,6 @@ export default class Dep {
   }
 
   addSub(sub) {
-    console.log(this.subs)
     this.subs.push(sub)
   }
 
