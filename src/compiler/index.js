@@ -1,4 +1,5 @@
 import { toString } from '../util'
+import { compilerDirective } from './direvtive'
 export * from './expression'
 
 const reg = {
@@ -55,4 +56,8 @@ export function getAllExpressionEl(dom) {
   })
 
   return expressEl
+}
+
+export function compiler(vm, dom) {
+  compilerDirective(vm, dom)
 }

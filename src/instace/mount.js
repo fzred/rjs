@@ -1,5 +1,5 @@
 import { updateNodeTextContent } from '../updata'
-import { getAllExpressionEl } from '../compiler'
+import { getAllExpressionEl, compiler } from '../compiler'
 import { isString } from '../util'
 import Watcher from '../observe/watcher'
 
@@ -16,7 +16,7 @@ export default function (R) {
 
   prototype._compile = function () {
     const _expressEl = this._expressEl = getAllExpressionEl(this.$el)
-
+    compiler(this, this.$el)
     // 单向绑定到插值表达式
     _expressEl.forEach(expressEL => {
       const exp = expressEL.exp.trim()
