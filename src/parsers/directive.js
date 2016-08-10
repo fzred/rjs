@@ -1,19 +1,28 @@
+import { isFn } from '../util'
 const directivePublic = {}
 
 class Directive {
   constructor(vm, obj, node, attr) {
     this.vm = vm
     this.el = node
+    this.expression = attr.nodeValue
     Object.keys(obj).forEach(key => {
       this[key] = obj[key].bind(this)
     })
-    this.vm.$watch(attr.nodeValue, (v) => {
-      this.update && this.update(v)
+
+    this.watch()
+  }
+
+  watch() {
+    this.vm.$watch(this.expression, (v) => {
+      if (isFn(this.update)) {
+        this.update(v)
+      }
     })
   }
 
   set(v) {
-    this.vm.$set('key', v)
+    this.vm.$set(this.expression, v)
   }
 }
 
