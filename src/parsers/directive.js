@@ -1,7 +1,15 @@
 const directivePublic = {}
+
 class Directive {
-  constructor(vm, node, attr) {
+  constructor(vm, obj, node, attr) {
     this.vm = vm
+    this.el = node
+    Object.keys(obj).forEach(key => {
+      this[key] = obj[key].bind(this)
+    })
+    this.vm.$watch(attr.nodeValue, (v) => {
+      this.update && this.update(v)
+    })
   }
 
   set(v) {
@@ -11,19 +19,17 @@ class Directive {
 
 export default function registerDirective(name, obj) {
   directivePublic[name] = function (vm, node, attr) {
-    const direct = new Directive(vm, node, attr)
-    Object.keys(obj).forEach(key => {
-      direct[key] = obj[key].bind(direct)
-    })
+    const direct = new Directive(vm, obj, node, attr)
+
     direct.bind() // 初始化
   }
 }
 
 registerDirective('r-model', {
   bind() {
-    this.update()
   },
-  update() {
+  update(v) {
+    this.el.value = v
     console.log('update', this)
   },
 })
