@@ -1,6 +1,6 @@
 import { toString } from '../util'
 import { compilerDirective } from './direvtive'
-export * from './expression'
+export * from '../parsers/expression'
 
 const reg = {
   get regText() {
