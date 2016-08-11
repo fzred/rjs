@@ -36,6 +36,9 @@ export default function registerDirective(name, obj) {
 
 registerDirective('r-model', {
   bind() {
+    this.el.addEventListener('change', () => {
+      this.set(this.el.value)
+    })
   },
   update(v) {
     this.el.value = v
