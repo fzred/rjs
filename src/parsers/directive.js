@@ -1,4 +1,5 @@
 import { isFn } from '../util'
+import { parsePath } from '../parsers/path'
 const directivePublic = {}
 
 class Directive {
